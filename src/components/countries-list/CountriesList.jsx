@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Container from "./Container";
 
 import Countrie from "./countrie/Countrie";
 import { getCountries } from "./service";
@@ -10,10 +11,10 @@ const CountrieList = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       <UserInputs></UserInputs>
       <Countrie></Countrie>
-    </>
+    </Container>
   );
 };
 

@@ -1,5 +1,5 @@
-import CountrieList from "./countrie-list/CountrieList";
-import Header from "./header/Header";
+import CountrieList from "./components/countries-list/CountriesList";
+import Header from "./components/header/Header";
 
 function App() {
   return (
