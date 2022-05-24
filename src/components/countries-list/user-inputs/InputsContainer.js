@@ -5,6 +5,10 @@ const InputsContainers = styled.section`
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem 0 2rem;
+  }
 `;
 
 export default InputsContainers;

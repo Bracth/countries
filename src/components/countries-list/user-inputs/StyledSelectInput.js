@@ -9,9 +9,8 @@ const StyledSelectInput = styled.select`
   margin-top: 1rem;
   padding-left: 1.2rem;
 
-  option {
-    border: none;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  @media (min-width: 768px) {
+    width: 20%;
   }
 `;
 

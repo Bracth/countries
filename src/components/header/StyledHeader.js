@@ -6,6 +6,11 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 3rem 0 3rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 export default StyledHeader;
