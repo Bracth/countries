@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Container from "./Container";
 
 import Countrie from "./countrie/Countrie";
@@ -7,23 +7,22 @@ import { getCountries } from "./service";
 import UserInputs from "./user-inputs/UserInput";
 
 const CountrieList = () => {
-  useEffect(() => {
-    // getCountries().then((response) => console.log(response));
-  }, []);
+  const [countries, setCountries] = useState([]);
 
-  const countrie = {
-    flag: "https://flagcdn.com/ve.svg",
-    capital: "Caracas",
-    name: "Venezuela",
-    population: 28435943,
-    region: "Americas",
-  };
+  useEffect(() => {
+    getCountries().then((response) => setCountries(response));
+  }, [setCountries]);
+
+  console.log(countries);
 
   return (
     <Container>
       <UserInputs></UserInputs>
       <CountriesContainer>
-        <Countrie countrie={countrie}></Countrie>
+        {countries.length > 0 &&
+          countries.map((countrie) => {
+            return <Countrie countrie={countrie}></Countrie>;
+          })}
       </CountriesContainer>
     </Container>
   );

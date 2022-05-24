@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const BodyCardContainer = styled.div`
   width: 100%;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 1.3rem 1.3rem 1rem 1.3rem;
+  box-sizing: border-box;
 
   h2 {
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
   p {
