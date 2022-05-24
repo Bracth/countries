@@ -8,6 +8,11 @@ const StyledSelectInput = styled.select`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-top: 1rem;
   padding-left: 1.2rem;
+
+  option {
+    border: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
 `;
 
 export default StyledSelectInput;

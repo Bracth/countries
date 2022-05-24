@@ -1,11 +1,24 @@
+import { useState } from "react";
 import InputsContainers from "./InputsContainer";
 import StyledSearchInput from "./StyledSearchInput";
 import StyledSelectInput from "./StyledSelectInput";
 
-const UserInputs = () => {
+const UserInputs = ({ handleFilters }) => {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+    handleFilters(search);
+  };
+
   return (
     <InputsContainers>
-      <StyledSearchInput type="text" placeholder="	Searh for a country..." />
+      <StyledSearchInput
+        value={search}
+        onChange={handleChange}
+        type="text"
+        placeholder="	Searh for a country..."
+      />
       <StyledSelectInput name="region" id="region">
         <option value="africa">Africa</option>
         <option value="america">America</option>

@@ -1,27 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Container from "./Container";
 
 import Countrie from "./countrie/Countrie";
 import CountriesContainer from "./CountriesContainer";
+import filterCountries from "./filterCountries";
 import { getCountries } from "./service";
 import UserInputs from "./user-inputs/UserInput";
 
 const CountrieList = () => {
   const [countries, setCountries] = useState([]);
+  const [filters, setFilters] = useState("");
+
+  const handleFilters = (search) => {
+    setFilters(search);
+  };
 
   useEffect(() => {
     getCountries().then((response) => setCountries(response));
   }, [setCountries]);
 
-  console.log(countries);
+  const filteredCountries = filterCountries(countries, filters);
 
   return (
     <Container>
-      <UserInputs></UserInputs>
+      <UserInputs handleFilters={handleFilters}></UserInputs>
       <CountriesContainer>
-        {countries.length > 0 &&
-          countries.map((countrie) => {
-            return <Countrie countrie={countrie}></Countrie>;
+        {filteredCountries.length > 0 &&
+          filteredCountries.map((countrie) => {
+            return (
+              <Countrie key={countrie.name} countrie={countrie}></Countrie>
+            );
           })}
       </CountriesContainer>
     </Container>
