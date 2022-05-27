@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   margin-bottom: 1rem;
 
   @media (min-width: 768px) {
-    padding: 2rem 3rem 0 3rem;
+    padding: 1.5rem 3rem 1.5rem 3rem;
     margin-bottom: 2.5rem;
   }
 `;

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 import InputsContainers from "./InputsContainer";
 import StyledSearchInput from "./StyledSearchInput";
-import StyledSelectInput from "./StyledSelectInput";
 
 const UserInputs = ({ handleFilters }) => {
   const [search, setSearch] = useState("");
@@ -19,13 +19,7 @@ const UserInputs = ({ handleFilters }) => {
         type="text"
         placeholder="	Searh for a country..."
       />
-      <StyledSelectInput name="region" id="region">
-        <option value="africa">Africa</option>
-        <option value="america">America</option>
-        <option value="europa">Europa</option>
-        <option value="asia">Asia</option>
-        <option value="oceania">Oceania</option>
-      </StyledSelectInput>
+      <Dropdown></Dropdown>
     </InputsContainers>
   );
 };
