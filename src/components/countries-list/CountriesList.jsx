@@ -5,14 +5,17 @@ import Countrie from "./countrie/Countrie";
 import CountriesContainer from "./CountriesContainer";
 import filterCountries from "./filterCountries";
 import { getCountries } from "./service";
-import UserInputs from "./user-inputs/UserInput";
+import UserInputs from "./user-inputs/UserInputs";
 
 const CountrieList = () => {
   const [countries, setCountries] = useState([]);
-  const [filters, setFilters] = useState("");
+  const [filters, setFilters] = useState({
+    search: "",
+    region: null,
+  });
 
-  const handleFilters = (search) => {
-    setFilters(search);
+  const handleFilters = (newFilters) => {
+    setFilters(newFilters);
   };
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const CountrieList = () => {
 
   return (
     <Container>
-      <UserInputs handleFilters={handleFilters}></UserInputs>
+      <UserInputs handleFilters={handleFilters} filters={filters}></UserInputs>
       <CountriesContainer>
         {filteredCountries.length > 0 &&
           filteredCountries.map((countrie) => {

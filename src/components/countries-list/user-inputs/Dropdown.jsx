@@ -3,12 +3,14 @@ import ContainerDropdown from "./ContainerDropdown";
 import DropdownButton from "./DropdownButton";
 import DropdownMenu from "./DropdownMenu";
 
-const Dropdown = () => {
+const Dropdown = ({ handleChange }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleClick = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const regions = ["africa", "americas", "asia", "europe", "oceania"];
 
   return (
     <ContainerDropdown>
@@ -18,20 +20,18 @@ const Dropdown = () => {
       </DropdownButton>
       {showDropdown && (
         <DropdownMenu>
-          <label htmlFor="africa">Africa</label>
-          <input type="radio" name="region" id="africa" />
-
-          <label htmlFor="americas">Americas</label>
-          <input type="radio" name="region" id="americas" />
-
-          <label htmlFor="Asia">Asia</label>
-          <input type="radio" name="region" id="Asia" />
-
-          <label htmlFor="europe">Europe</label>
-          <input type="radio" name="region" id="europe" />
-
-          <label htmlFor="oceania">Oceania</label>
-          <input type="radio" name="region" id="oceania" />
+          {regions.map((region) => (
+            <div key={region}>
+              <label htmlFor={region}>{region}</label>
+              <input
+                value={region}
+                onChange={handleChange}
+                type="radio"
+                name="region"
+                id={region}
+              />
+            </div>
+          ))}
         </DropdownMenu>
       )}
     </ContainerDropdown>

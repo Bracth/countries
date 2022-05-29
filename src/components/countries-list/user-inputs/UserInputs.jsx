@@ -1,25 +1,25 @@
-import { useState } from "react";
 import Dropdown from "./Dropdown";
 import InputsContainers from "./InputsContainer";
 import StyledSearchInput from "./StyledSearchInput";
 
-const UserInputs = ({ handleFilters }) => {
-  const [search, setSearch] = useState("");
-
+const UserInputs = ({ handleFilters, filters }) => {
   const handleChange = (event) => {
-    setSearch(event.target.value);
-    handleFilters(search);
+    const newFilters = () => {
+      return { ...filters, [event.target.name]: event.target.value };
+    };
+    handleFilters(newFilters());
   };
 
   return (
     <InputsContainers>
       <StyledSearchInput
-        value={search}
+        name="search"
+        value={filters.search}
         onChange={handleChange}
         type="text"
         placeholder="	Searh for a country..."
       />
-      <Dropdown></Dropdown>
+      <Dropdown handleChange={handleChange}></Dropdown>
     </InputsContainers>
   );
 };

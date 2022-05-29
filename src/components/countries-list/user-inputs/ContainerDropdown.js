@@ -8,7 +8,6 @@ const ContainerDropdown = styled.div`
   border-radius: 2%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-top: 1rem;
-  cursor: pointer;
 
   @media (min-width: 640px) {
     width: 40%;
@@ -21,7 +20,7 @@ const ContainerDropdown = styled.div`
   }
 
   @media (min-width: 1080px) {
-    width: 20%;
+    width: 15%;
     margin-top: 0;
   }
 `;

@@ -1,8 +1,17 @@
-const filterCountries = (countries, filter) => {
-  const filteredCountries = countries.filter((countrie) =>
-    countrie.name.toLowerCase().includes(filter.toLowerCase())
+const filterCountries = (countries, { search, region }) => {
+  let filterCountries = countries;
+
+  if (region) {
+    filterCountries = filterCountries.filter(
+      (countrie) => countrie.region.toLowerCase() === region
+    );
+  }
+
+  filterCountries = filterCountries.filter((countrie) =>
+    countrie.name.toLowerCase().includes(search.toLowerCase())
   );
-  return filteredCountries;
+
+  return filterCountries;
 };
 
 export default filterCountries;

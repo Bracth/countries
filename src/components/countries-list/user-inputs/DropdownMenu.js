@@ -13,13 +13,21 @@ const DropdownMenu = styled.div`
   font-weight: 600;
   font-size: 0.8rem;
 
-  label {
+  div {
     width: 100%;
     cursor: pointer;
   }
 
+  label {
+    width: 100%;
+  }
+
   input {
     display: none;
+  }
+
+  label:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 
   @media (min-width: 768px) {
