@@ -5,6 +5,11 @@ import StyledSearchInput from "./StyledSearchInput";
 const UserInputs = ({ handleFilters, filters }) => {
   const handleChange = (event) => {
     const newFilters = () => {
+      if (event.target.type === "radio") {
+        if (event.target.value === filters.region) {
+          return { ...filters, region: null };
+        }
+      }
       return { ...filters, [event.target.name]: event.target.value };
     };
     handleFilters(newFilters());
@@ -17,9 +22,12 @@ const UserInputs = ({ handleFilters, filters }) => {
         value={filters.search}
         onChange={handleChange}
         type="text"
-        placeholder="	Searh for a country..."
+        placeholder="Search for a country..."
       />
-      <Dropdown handleChange={handleChange}></Dropdown>
+      <Dropdown
+        handleChange={handleChange}
+        actualRegion={filters.region}
+      ></Dropdown>
     </InputsContainers>
   );
 };

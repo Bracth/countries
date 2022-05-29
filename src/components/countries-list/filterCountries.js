@@ -3,7 +3,7 @@ const filterCountries = (countries, { search, region }) => {
 
   if (region) {
     filterCountries = filterCountries.filter(
-      (countrie) => countrie.region.toLowerCase() === region
+      (countrie) => countrie.region === region
     );
   }
 

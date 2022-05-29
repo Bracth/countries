@@ -15,15 +15,17 @@ const DropdownMenu = styled.div`
 
   div {
     width: 100%;
-    cursor: pointer;
   }
 
   label {
     width: 100%;
+    display: inline-block;
+    cursor: pointer;
   }
 
   input {
     display: none;
+    width: 100%;
   }
 
   label:hover {

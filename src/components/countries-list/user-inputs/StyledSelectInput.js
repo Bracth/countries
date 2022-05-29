@@ -8,7 +8,6 @@ const StyledSelectInput = styled.select`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-top: 1rem;
   padding-left: 1.2rem;
-
   @media (min-width: 768px) {
     width: 20%;
   }

@@ -3,19 +3,19 @@ import ContainerDropdown from "./ContainerDropdown";
 import DropdownButton from "./DropdownButton";
 import DropdownMenu from "./DropdownMenu";
 
-const Dropdown = ({ handleChange }) => {
+const Dropdown = ({ handleChange, actualRegion }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleClick = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const regions = ["africa", "americas", "asia", "europe", "oceania"];
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
     <ContainerDropdown>
       <DropdownButton onClick={handleClick}>
-        <p>Filter by region</p>
+        {actualRegion ? <p>{actualRegion}</p> : <p>Filter by region</p>}
         <i className="fa-solid fa-angle-down"></i>
       </DropdownButton>
       {showDropdown && (
@@ -25,7 +25,7 @@ const Dropdown = ({ handleChange }) => {
               <label htmlFor={region}>{region}</label>
               <input
                 value={region}
-                onChange={handleChange}
+                onClick={handleChange}
                 type="radio"
                 name="region"
                 id={region}
