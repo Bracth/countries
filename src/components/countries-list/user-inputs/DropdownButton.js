@@ -11,6 +11,7 @@ const DropdownButton = styled.button`
   padding: 1rem 1.5rem 1rem 1.5rem;
   font-size: 0.8rem;
   font-weight: 600;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     font-size: 1rem;
