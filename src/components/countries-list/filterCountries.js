@@ -7,9 +7,11 @@ const filterCountries = (countries, { search, region }) => {
     );
   }
 
-  filterCountries = filterCountries.filter((countrie) =>
-    countrie.name.toLowerCase().includes(search.toLowerCase())
-  );
+  if (search !== "") {
+    filterCountries = filterCountries.filter((countrie) =>
+      countrie.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
 
   return filterCountries;
 };

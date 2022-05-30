@@ -1,26 +1,30 @@
 import { useEffect, useState, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountries } from "../store/countriesSlice";
 import Container from "./Container";
 
 import Countrie from "./countrie/Countrie";
 import CountriesContainer from "./CountriesContainer";
 import filterCountries from "./filterCountries";
-import { getCountries } from "./service";
 import UserInputs from "./user-inputs/UserInputs";
 
 const CountrieList = () => {
-  const [countries, setCountries] = useState([]);
   const [filters, setFilters] = useState({
     search: "",
     region: null,
   });
+
+  const dispatch = useDispatch();
 
   const handleFilters = (newFilters) => {
     setFilters(newFilters);
   };
 
   useEffect(() => {
-    getCountries().then((response) => setCountries(response));
-  }, [setCountries]);
+    dispatch(fetchCountries());
+  }, [dispatch]);
+
+  const countries = useSelector((state) => state.countries.countriesList);
 
   const filteredCountries = filterCountries(countries, filters);
 
