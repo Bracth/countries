@@ -19,18 +19,22 @@ export const countriesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder
-      .addCase(fetchCountries.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(fetchCountries.fulfilled, (state, action) => {
-        if (state.status === "succeeded") {
-          return;
-        }
-        state.status = "succeeded";
-        state.countriesList.push(...action.payload);
-      });
+    builder.addCase(fetchCountries.fulfilled, (state, action) => {
+      if (state.status === "succeeded") {
+        return;
+      }
+      state.status = "succeeded";
+      state.countriesList.push(...action.payload);
+    });
   },
 });
 
 export default countriesSlice.reducer;
+
+export const getCountrie =
+  ({ countrieName }) =>
+  (state) => {
+    return state.countries.countriesList.find(
+      (countrie) => countrie.name === countrieName
+    );
+  };

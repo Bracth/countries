@@ -6,6 +6,8 @@ const CountrieCard = styled.div`
   height: 350px;
   border-radius: 2%;
   margin-bottom: 2.5rem;
+  text-decoration: none;
+  color: black;
 `;
 
 export default CountrieCard;

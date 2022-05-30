@@ -1,11 +1,17 @@
 import CountrieList from "./components/countries-list/CountriesList";
-import Header from "./components/header/Header";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import CountrieDetail from "./components/countrie-detail/CountrieDetail";
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <CountrieList></CountrieList>
+      <Layout>
+        <Routes>
+          <Route index element={<CountrieList />} />
+          <Route path=":countrieName" element={<CountrieDetail />} />
+        </Routes>
+      </Layout>
     </>
   );
 }

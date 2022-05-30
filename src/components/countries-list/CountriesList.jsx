@@ -1,7 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/countriesSlice";
-import Container from "./Container";
 
 import Countrie from "./countrie/Countrie";
 import CountriesContainer from "./CountriesContainer";
@@ -29,7 +28,7 @@ const CountrieList = () => {
   const filteredCountries = filterCountries(countries, filters);
 
   return (
-    <Container>
+    <>
       <UserInputs handleFilters={handleFilters} filters={filters}></UserInputs>
       <CountriesContainer>
         {filteredCountries.length > 0 &&
@@ -39,7 +38,7 @@ const CountrieList = () => {
             );
           })}
       </CountriesContainer>
-    </Container>
+    </>
   );
 };
 
