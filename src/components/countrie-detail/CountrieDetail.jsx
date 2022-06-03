@@ -1,15 +1,20 @@
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { getCountrie } from "../store/countriesSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchCountrie, getCountrie } from "../store/countriesSlice";
 import ButtonStyled from "./ButtonStyled";
 import BackButtonContainer from "./BackButtonContainer";
 import Countrie from "./Countrie";
 import { Link } from "react-router-dom";
 
 const CountrieDetail = () => {
-  const countrieName = useParams();
+  const { countrieName } = useParams();
   const countrie = useSelector(getCountrie(countrieName));
-  console.log(countrie);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCountrie(countrieName));
+  }, [dispatch, countrieName]);
 
   return (
     <>
@@ -20,7 +25,7 @@ const CountrieDetail = () => {
           </ButtonStyled>
         </Link>
       </BackButtonContainer>
-      <Countrie countrie={countrie} />
+      {countrie && <Countrie countrie={countrie} />}
     </>
   );
 };

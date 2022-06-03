@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getCountries } from "../countries-list/service";
+import { fetchCountrieByName, getCountries } from "../countries-list/service";
 
 const initialState = {
   countriesList: [],
@@ -14,27 +14,37 @@ export const fetchCountries = createAsyncThunk(
   }
 );
 
+export const fetchCountrie = createAsyncThunk(
+  "countries/fetchCountrie",
+  async (countrieName) => {
+    const countrie = await fetchCountrieByName(countrieName);
+    return countrie;
+  }
+);
+
 export const countriesSlice = createSlice({
   name: "countries",
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchCountries.fulfilled, (state, action) => {
-      if (state.status === "succeeded") {
-        return;
-      }
-      state.status = "succeeded";
-      state.countriesList.push(...action.payload);
-    });
+    builder
+      .addCase(fetchCountries.fulfilled, (state, action) => {
+        if (state.status === "succeeded") {
+          return;
+        }
+        state.status = "succeeded";
+        state.countriesList = [...action.payload];
+      })
+      .addCase(fetchCountrie.fulfilled, (state, action) => {
+        state.countriesList.push(...action.payload);
+      });
   },
 });
 
 export default countriesSlice.reducer;
 
-export const getCountrie =
-  ({ countrieName }) =>
-  (state) => {
-    return state.countries.countriesList.find(
-      (countrie) => countrie.name === countrieName
-    );
-  };
+export const getCountrie = (countrieName) => (state) => {
+  return state.countries.countriesList.find(
+    (countrie) => countrie.name === countrieName
+  );
+};

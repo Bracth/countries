@@ -50,13 +50,13 @@ const Countrie = ({ countrie }) => {
           <p>
             Currencies:
             {currencies.map((currencie) => (
-              <span>{currencie.name}</span>
+              <span key={currencie}>{currencie.name}</span>
             ))}
           </p>
           <p>
             Languagues:
             {languages.map((language) => (
-              <span>{language.name}</span>
+              <span key={language}>{language.name}</span>
             ))}
           </p>
         </div>
